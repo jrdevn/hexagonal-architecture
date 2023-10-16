@@ -1,0 +1,34 @@
+Arquitetura Hexagonal -
+
+
+Em .NET por exemplo, posso ter uma camada assim: 
+- Dois projetos um apenas de aplicação e um WebApi.
+ - O de aplicação é onde vai ficar toda minha lógica de negócio, no qual eu insiro meus ports e ele não depende do WebApi para funcionar.
+ - O de WebApi ele simplesmente vai ser um conector para a aplicação, apenas para fazer os Adapters e ler/gravar dados atraves das portas no aplicação.
+
+
+Ports - são as entradas, ou seja, é a minha implementação independente do mundo externo que estou fazendo para se conectar a minha aplicação
+
+Adapters - é o meu conector nas portas, para capturar o que um Port está me oferecendo, ou seja, posso ter duas api's consumindo o mesmo Port mas para contextos diferentes, ex: um sistema web e um mobile.
+
+
+O Domain está dentro da aplicação.
+A arquitetura hexagonal é mais um design do que uma arquitetura em si.
+Geralmente quando temos a aplicação ele é independente e não tem nenhum framework, lib..
+
+Por ex, banco de dados:
+
+na minha camada de aplicação eu tenho a entidade escrita, sem nada relacionado a mapping e bidding de BD.
+Eu crio um modulo no adapter para criar um bd com base nas entidades da aplicação, independente do BD, NoSQL, SQL e etc..
+
+O que são os adapters de entrada? 
+Como eu entro na aplicação.. seja por um controller, fila, script etc..
+
+O que são os adaptadores de saida?
+Como eu saio da minha aplicação? Como eu acesso um client, database, publico uma mensagem numa fila..
+
+No caso entrada é tudo que entra na minha aplicação e saída é como eu acesso algo externo.
+
+As portas de entrada e saída da aplicação é como eu acesso a minha aplicação core (entrada) e como eu saio da aplicação (saída).
+
+A entrada pode-se dizer que é a implementação do caso de uso e a saída é como o meu adapter do mundo externo pluga para acessar as regras de negocio.
